@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	todo "github.com/ymoldabe/Todo_list"
@@ -32,6 +34,7 @@ func main() {
 	handler := handler.NewHandler(service)
 
 	srv := new(todo.Server)
+	fmt.Println(viper.GetString("port"))
 	if err = srv.Run(viper.GetString("port"), handler.InitRoutes()); err != nil {
 		logrus.Fatalf("error of listening server %s", err.Error())
 	}
@@ -43,8 +46,6 @@ func initConfig() error {
 	viper.SetConfigName("config")
 	return viper.ReadInConfig()
 }
-
-//docker run -d -p 27017:27017 --name mongodb_container mongo
 
 //64d4f04f8e69b16aaf8f172a
 //64d4f1468e69b16aaf8f172b

@@ -1,9 +1,9 @@
-port: ":8000"
+port: ":8080"
 
 db:
   port: "27017"
   driver: "mongodb"
   username: "mongo"
-  host: "localhost"
+  host: "mongodb"
   password: "090909"
   
